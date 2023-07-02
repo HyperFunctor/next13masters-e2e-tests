@@ -1,0 +1,121 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  envinfo:
+    specifier: 7.10.0
+    version: registry.npmjs.org/envinfo@7.10.0
+  semver:
+    specifier: 7.5.3
+    version: registry.npmjs.org/semver@7.5.3
+
+devDependencies:
+  '@playwright/test':
+    specifier: 1.35.1
+    version: registry.npmjs.org/@playwright/test@1.35.1
+  '@types/envinfo':
+    specifier: 7.8.1
+    version: registry.npmjs.org/@types/envinfo@7.8.1
+  '@types/node':
+    specifier: 20.3.3
+    version: registry.npmjs.org/@types/node@20.3.3
+  '@types/semver':
+    specifier: 7.5.0
+    version: registry.npmjs.org/@types/semver@7.5.0
+  dotenv:
+    specifier: 16.3.1
+    version: registry.npmjs.org/dotenv@16.3.1
+
+packages:
+
+  registry.npmjs.org/@playwright/test@1.35.1:
+    resolution: {integrity: sha512-b5YoFe6J9exsMYg0pQAobNDR85T1nLumUYgUTtKm4d21iX2L7WqKq9dW8NGJ+2vX0etZd+Y7UeuqsxDXm9+5ZA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@playwright/test/-/test-1.35.1.tgz}
+    name: '@playwright/test'
+    version: 1.35.1
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      '@types/node': registry.npmjs.org/@types/node@20.3.3
+      playwright-core: registry.npmjs.org/playwright-core@1.35.1
+    optionalDependencies:
+      fsevents: registry.npmjs.org/fsevents@2.3.2
+    dev: true
+
+  registry.npmjs.org/@types/envinfo@7.8.1:
+    resolution: {integrity: sha512-pTyshpmGxqB9lRwG75v2YR0oqKYpCrklOYlZWQ88z/JB0fimT8EVmYekuIwpU3IxPZDHSXCqXKzkCrtAcKY25g==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/envinfo/-/envinfo-7.8.1.tgz}
+    name: '@types/envinfo'
+    version: 7.8.1
+    dev: true
+
+  registry.npmjs.org/@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-20.3.3.tgz}
+    name: '@types/node'
+    version: 20.3.3
+    dev: true
+
+  registry.npmjs.org/@types/semver@7.5.0:
+    resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/semver/-/semver-7.5.0.tgz}
+    name: '@types/semver'
+    version: 7.5.0
+    dev: true
+
+  registry.npmjs.org/dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/dotenv/-/dotenv-16.3.1.tgz}
+    name: dotenv
+    version: 16.3.1
+    engines: {node: '>=12'}
+    dev: true
+
+  registry.npmjs.org/envinfo@7.10.0:
+    resolution: {integrity: sha512-ZtUjZO6l5mwTHvc1L9+1q5p/R3wTopcfqMW8r5t8SJSKqeVI/LtajORwRFEKpEFuekjD0VBjwu1HMxL4UalIRw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/envinfo/-/envinfo-7.10.0.tgz}
+    name: envinfo
+    version: 7.10.0
+    engines: {node: '>=4'}
+    hasBin: true
+    dev: false
+
+  registry.npmjs.org/fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz}
+    name: fsevents
+    version: 2.3.2
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  registry.npmjs.org/lru-cache@6.0.0:
+    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/lru-cache/-/lru-cache-6.0.0.tgz}
+    name: lru-cache
+    version: 6.0.0
+    engines: {node: '>=10'}
+    dependencies:
+      yallist: registry.npmjs.org/yallist@4.0.0
+    dev: false
+
+  registry.npmjs.org/playwright-core@1.35.1:
+    resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/playwright-core/-/playwright-core-1.35.1.tgz}
+    name: playwright-core
+    version: 1.35.1
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
+  registry.npmjs.org/semver@7.5.3:
+    resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/semver/-/semver-7.5.3.tgz}
+    name: semver
+    version: 7.5.3
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: registry.npmjs.org/lru-cache@6.0.0
+    dev: false
+
+  registry.npmjs.org/yallist@4.0.0:
+    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz}
+    name: yallist
+    version: 4.0.0
+    dev: false
