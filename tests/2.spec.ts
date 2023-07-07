@@ -29,7 +29,7 @@ test.describe("Module 2", () => {
 		);
 	});
 
-	test.only(`products list API implemented`, async ({ page }) => {
+	test(`products list API implemented`, async ({ page }) => {
 		await page.goto("/products");
 
 		const list = await page.getByTestId("products-list");
