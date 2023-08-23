@@ -9,19 +9,19 @@ dependencies:
     specifier: 7.10.0
     version: registry.npmjs.org/envinfo@7.10.0
   semver:
-    specifier: 7.5.3
-    version: registry.npmjs.org/semver@7.5.3
+    specifier: 7.5.4
+    version: registry.npmjs.org/semver@7.5.4
 
 devDependencies:
   '@playwright/test':
-    specifier: 1.35.1
-    version: registry.npmjs.org/@playwright/test@1.35.1
+    specifier: 1.37.1
+    version: registry.npmjs.org/@playwright/test@1.37.1
   '@types/envinfo':
     specifier: 7.8.1
     version: registry.npmjs.org/@types/envinfo@7.8.1
   '@types/node':
-    specifier: 20.3.3
-    version: registry.npmjs.org/@types/node@20.3.3
+    specifier: 20.5.4
+    version: registry.npmjs.org/@types/node@20.5.4
   '@types/semver':
     specifier: 7.5.0
     version: registry.npmjs.org/@types/semver@7.5.0
@@ -31,15 +31,15 @@ devDependencies:
 
 packages:
 
-  registry.npmjs.org/@playwright/test@1.35.1:
-    resolution: {integrity: sha512-b5YoFe6J9exsMYg0pQAobNDR85T1nLumUYgUTtKm4d21iX2L7WqKq9dW8NGJ+2vX0etZd+Y7UeuqsxDXm9+5ZA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@playwright/test/-/test-1.35.1.tgz}
+  registry.npmjs.org/@playwright/test@1.37.1:
+    resolution: {integrity: sha512-bq9zTli3vWJo8S3LwB91U0qDNQDpEXnw7knhxLM0nwDvexQAwx9tO8iKDZSqqneVq+URd/WIoz+BALMqUTgdSg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@playwright/test/-/test-1.37.1.tgz}
     name: '@playwright/test'
-    version: 1.35.1
+    version: 1.37.1
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node@20.3.3
-      playwright-core: registry.npmjs.org/playwright-core@1.35.1
+      '@types/node': registry.npmjs.org/@types/node@20.5.4
+      playwright-core: registry.npmjs.org/playwright-core@1.37.1
     optionalDependencies:
       fsevents: registry.npmjs.org/fsevents@2.3.2
     dev: true
@@ -50,10 +50,10 @@ packages:
     version: 7.8.1
     dev: true
 
-  registry.npmjs.org/@types/node@20.3.3:
-    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-20.3.3.tgz}
+  registry.npmjs.org/@types/node@20.5.4:
+    resolution: {integrity: sha512-Y9vbIAoM31djQZrPYjpTLo0XlaSwOIsrlfE3LpulZeRblttsLQRFRlBAppW0LOxyT3ALj2M5vU1ucQQayQH3jA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-20.5.4.tgz}
     name: '@types/node'
-    version: 20.3.3
+    version: 20.5.4
     dev: true
 
   registry.npmjs.org/@types/semver@7.5.0:
@@ -96,18 +96,18 @@ packages:
       yallist: registry.npmjs.org/yallist@4.0.0
     dev: false
 
-  registry.npmjs.org/playwright-core@1.35.1:
-    resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/playwright-core/-/playwright-core-1.35.1.tgz}
+  registry.npmjs.org/playwright-core@1.37.1:
+    resolution: {integrity: sha512-17EuQxlSIYCmEMwzMqusJ2ztDgJePjrbttaefgdsiqeLWidjYz9BxXaTaZWxH1J95SHGk6tjE+dwgWILJoUZfA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/playwright-core/-/playwright-core-1.37.1.tgz}
     name: playwright-core
-    version: 1.35.1
+    version: 1.37.1
     engines: {node: '>=16'}
     hasBin: true
     dev: true
 
-  registry.npmjs.org/semver@7.5.3:
-    resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/semver/-/semver-7.5.3.tgz}
+  registry.npmjs.org/semver@7.5.4:
+    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/semver/-/semver-7.5.4.tgz}
     name: semver
-    version: 7.5.3
+    version: 7.5.4
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
