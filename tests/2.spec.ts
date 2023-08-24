@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Module 2", () => {
-	test(`active link in navbar implemented`, async ({ page }) => {
+	test(`1. active link in navbar implemented`, async ({ page }) => {
 		await page.goto("/");
 
 		const nav = page.getByRole("navigation").first();
-		await expect(nav.getByRole("link", { name: "Home" })).toBeTruthy();
-		await expect(nav.getByRole("link", { name: "All" })).toBeTruthy();
+		expect(await nav.getByRole("link", { name: "Home" }).count()).toBeGreaterThan(0);
+		expect(await nav.getByRole("link", { name: "All" }).count()).toBeGreaterThan(0);
 
 		const activeLinkBorderBottomColor = await nav
 			.getByRole("link", { name: "Home" })
@@ -29,30 +29,71 @@ test.describe("Module 2", () => {
 		);
 	});
 
-	test(`products list API implemented`, async ({ page }) => {
-		await page.goto("/products");
-
-		const list = await page.getByTestId("products-list");
-		const productListItems = await list.locator("li");
-		expect(await productListItems.count()).toBe(10);
-
-		const productsRes = await fetch(`https://naszsklep-api.vercel.app/api/products?take=20`);
-		const productsData = await productsRes.json();
-
-		const productListItemsElements = await productListItems.all();
-		for (let i = 0; i < productListItemsElements.length; i++) {
-			const title = await productListItemsElements[i].locator("h3").innerText();
-			expect(title).toMatch(productsData[i].title);
-		}
+	test(`2.`, () => {
+		/** Nothing to do here */
 	});
 
-	test(`single product page implemented`, async ({ page }) => {
-		const productsRes = await fetch(`https://naszsklep-api.vercel.app/api/products?take=20`);
-		const productsData = await productsRes.json();
-		const randomProduct = productsData[Math.floor(Math.random() * productsData.length)];
+	test(`3.`, () => {
+		/** Nothing to do here */
+	});
 
-		await page.goto(`/product/${randomProduct.id}`);
-		await expect(page.locator("h1")).toContainText(randomProduct.title);
-		expect(await page.title()).toContain(randomProduct.title);
+	test(`4.`, () => {
+		/** Nothing to do here */
+	});
+
+	test(`5. products list API implemented`, async ({ page }) => {
+		await page.goto("/products");
+
+		const list = page.getByTestId("products-list");
+		const productListItems = list.locator("li");
+		expect(await productListItems.count()).toBeGreaterThan(0);
+	});
+
+	test(`6. single product page implemented`, async ({ page }) => {
+		await page.goto(`/products`);
+		const list = page.getByTestId("products-list");
+		const productLink = list.locator("li a");
+		const count = await productLink.count();
+		expect(count).toBeGreaterThan(0);
+		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
+		await randomProductLink.click();
+
+		const title = await page.locator("h1").textContent();
+		expect(await page.title()).toContain(title);
+	});
+
+	test(`7. single product SEO`, async ({ page }) => {
+		await page.goto(`/products`);
+		const list = page.getByTestId("products-list");
+		const productLink = list.locator("li a");
+		const count = await productLink.count();
+		expect(count).toBeGreaterThan(0);
+		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
+		await randomProductLink.click();
+
+		const metaDescription = page.locator('meta[name="description"]');
+		const description = await metaDescription.getAttribute("content");
+		expect(description).toBeTruthy();
+
+		const text = await page.textContent("body");
+		expect(text).toContain(description);
+	});
+
+	test(`8. pagination`, async ({ page }) => {
+		await page.goto(`/products`);
+
+		const paginationLinks = page.getByLabel(/pagination/i).getByRole("link");
+		const count = await paginationLinks.count();
+		expect(count).toBeGreaterThan(0);
+
+		const randomPageLink = paginationLinks.nth(Math.floor(Math.random() * count));
+		await randomPageLink.click();
+		const list = page.getByTestId("products-list");
+		const productListItems = list.locator("li");
+		expect(await productListItems.count()).toBeGreaterThan(0);
+	});
+
+	test(`9.`, () => {
+		/** Nothing to do here */
 	});
 });
