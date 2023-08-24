@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { openRandomProductPage } from "./utils";
 
 test.describe("Module 2", () => {
 	test(`1. active link in navbar implemented`, async ({ page }) => {
@@ -52,30 +53,14 @@ test.describe("Module 2", () => {
 	});
 
 	test(`6. single product page implemented`, async ({ page }) => {
-		await page.goto(`/products`);
-		const list = page.getByTestId("products-list");
-		const productLink = list.locator("li a");
-		await productLink.first().waitFor();
-		const count = await productLink.count();
-		expect(count).toBeGreaterThan(0);
-		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
-		await randomProductLink.click();
-		await page.waitForURL("**/product/**");
+		await openRandomProductPage({ page });
 
 		const title = await page.locator("h1").textContent();
 		expect(await page.title()).toContain(title);
 	});
 
 	test(`7. single product SEO`, async ({ page }) => {
-		await page.goto(`/products`);
-		const list = page.getByTestId("products-list");
-		const productLink = list.locator("li a");
-		await productLink.first().waitFor();
-		const count = await productLink.count();
-		expect(count).toBeGreaterThan(0);
-		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
-		await randomProductLink.click();
-		await page.waitForURL("**/product/**");
+		await openRandomProductPage({ page });
 
 		const metaDescription = page.locator('meta[name="description"]');
 		const description = await metaDescription.getAttribute("content");
