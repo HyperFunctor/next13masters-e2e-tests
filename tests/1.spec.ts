@@ -29,6 +29,7 @@ test.describe("Module 1", () => {
 
 		const list = page.getByTestId("products-list");
 		const products = await list.locator("li");
+		await products.first().waitFor();
 		expect(await products.count()).toBe(4);
 
 		for (const li of await products.all()) {

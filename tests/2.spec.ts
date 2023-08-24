@@ -5,6 +5,7 @@ test.describe("Module 2", () => {
 		await page.goto("/");
 
 		const nav = page.getByRole("navigation").first();
+		await nav.waitFor();
 		expect(await nav.getByRole("link", { name: "Home" }).count()).toBeGreaterThan(0);
 		expect(await nav.getByRole("link", { name: "All" }).count()).toBeGreaterThan(0);
 
@@ -46,6 +47,7 @@ test.describe("Module 2", () => {
 
 		const list = page.getByTestId("products-list");
 		const productListItems = list.locator("li");
+		await productListItems.first().waitFor();
 		expect(await productListItems.count()).toBeGreaterThan(0);
 	});
 
@@ -53,10 +55,12 @@ test.describe("Module 2", () => {
 		await page.goto(`/products`);
 		const list = page.getByTestId("products-list");
 		const productLink = list.locator("li a");
+		await productLink.first().waitFor();
 		const count = await productLink.count();
 		expect(count).toBeGreaterThan(0);
 		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
 		await randomProductLink.click();
+		await page.waitForURL("**/product/**");
 
 		const title = await page.locator("h1").textContent();
 		expect(await page.title()).toContain(title);
@@ -66,10 +70,12 @@ test.describe("Module 2", () => {
 		await page.goto(`/products`);
 		const list = page.getByTestId("products-list");
 		const productLink = list.locator("li a");
+		await productLink.first().waitFor();
 		const count = await productLink.count();
 		expect(count).toBeGreaterThan(0);
 		const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
 		await randomProductLink.click();
+		await page.waitForURL("**/product/**");
 
 		const metaDescription = page.locator('meta[name="description"]');
 		const description = await metaDescription.getAttribute("content");
@@ -83,13 +89,17 @@ test.describe("Module 2", () => {
 		await page.goto(`/products`);
 
 		const paginationLinks = page.getByLabel(/pagination/i).getByRole("link");
+		await paginationLinks.first().waitFor();
 		const count = await paginationLinks.count();
 		expect(count).toBeGreaterThan(0);
 
 		const randomPageLink = paginationLinks.nth(Math.floor(Math.random() * count));
 		await randomPageLink.click();
+		await page.waitForURL("**/products/**");
+
 		const list = page.getByTestId("products-list");
 		const productListItems = list.locator("li");
+		await productListItems.first().waitFor();
 		expect(await productListItems.count()).toBeGreaterThan(0);
 	});
 
