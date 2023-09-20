@@ -3,5 +3,3 @@ node_modules/
 test-results.json
 /playwright-report/
 /playwright/.cache/
-bundle/
-output/

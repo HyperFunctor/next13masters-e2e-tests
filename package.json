@@ -3,20 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "esbuild --minify tests/*.ts --outdir=bundle",
-    "test": "pnpm build && pnpm playwright test bundle/*.js --reporter=html"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "1.37.1",
     "@types/envinfo": "7.8.1",
-    "@types/node": "20.5.9",
-    "@types/semver": "7.5.1",
-    "dotenv": "16.3.1",
-    "esbuild": "^0.19.2"
+    "@types/node": "20.5.4",
+    "@types/semver": "7.5.0",
+    "dotenv": "16.3.1"
   },
   "dependencies": {
     "envinfo": "7.10.0",
