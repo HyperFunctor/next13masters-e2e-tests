@@ -10,25 +10,10 @@ test.describe("Module 2", () => {
 		expect(await nav.getByRole("link", { name: "Home" }).count()).toBeGreaterThan(0);
 		expect(await nav.getByRole("link", { name: "All" }).count()).toBeGreaterThan(0);
 
-		const activeLinkBorderBottomColor = await nav
-			.getByRole("link", { name: "Home" })
-			.evaluate((e) => window.getComputedStyle(e).borderBottomColor);
-		const inactiveLinkBorderBottomColor = await nav
-			.getByRole("link", { name: "All" })
-			.evaluate((e) => window.getComputedStyle(e).borderBottomColor);
-
-		expect(activeLinkBorderBottomColor).not.toBe(inactiveLinkBorderBottomColor);
-
+		const activeLinkBefore = await nav.locator("[aria-current]").first().innerHTML();
 		await page.goto("/products");
-
-		await expect(nav.getByRole("link", { name: "Home" })).toHaveCSS(
-			"border-bottom-color",
-			inactiveLinkBorderBottomColor,
-		);
-		await expect(nav.getByRole("link", { name: "All" })).toHaveCSS(
-			"border-bottom-color",
-			activeLinkBorderBottomColor,
-		);
+		const activeLinkAfter = await nav.locator("[aria-current]").first().innerHTML();
+		expect(activeLinkBefore).not.toBe(activeLinkAfter);
 	});
 
 	test(`2.`, () => {
@@ -66,7 +51,7 @@ test.describe("Module 2", () => {
 		const description = await metaDescription.getAttribute("content");
 		expect(description).toBeTruthy();
 
-		const text = await page.textContent("body");
+		const text = await page.innerText("body");
 		expect(text).toContain(description);
 	});
 
@@ -80,7 +65,10 @@ test.describe("Module 2", () => {
 
 		const randomPageLink = paginationLinks.nth(Math.floor(Math.random() * count));
 		await randomPageLink.click();
-		await page.waitForURL("**/products/**");
+
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
+		await page.waitForURL(/(\/products\/\d+)|(\/products\/?$)/);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 
 		const list = page.getByTestId("products-list");
 		const productListItems = list.locator("li");

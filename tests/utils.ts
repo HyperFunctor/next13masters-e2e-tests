@@ -6,10 +6,15 @@ export async function openRandomProductPage({ page }: { page: Page }) {
 	const productLink = list.locator("li a");
 	await productLink.first().waitFor();
 	const count = await productLink.count();
-	expect(count).toBeGreaterThan(0);
 	const randomProductLink = productLink.nth(Math.floor(Math.random() * count));
-	await randomProductLink.click();
-	await page.waitForURL("**/product/**");
+	await randomProductLink.waitFor();
+	await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
+	await expect(async () => {
+		await randomProductLink.click();
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
+		await page.waitForURL("**/product/**", { timeout: 100 });
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
+	}).toPass();
 }
 
 export async function getProductPrices({ page }: { page: Page }) {

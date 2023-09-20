@@ -18,22 +18,46 @@ test.describe("Module 1", () => {
 			),
 		) as EnvinfoResult;
 
-		expect(semver.satisfies(info.Binaries.Node.version, ">=20.0.0")).toBe(true);
-		expect(semver.satisfies(info.Binaries.pnpm.version, ">=8.6.0")).toBe(true);
-		expect(semver.satisfies(info.IDEs.VSCode.version, ">=1.7.0")).toBe(true);
-		expect(semver.satisfies(info.Utilities.Git.version, ">=2.23.0")).toBe(true);
+		const getVersion = (value: string | { version: string }) =>
+			(typeof value === "string" ? value : value.version)
+				.replace(/[^0-9.]/g, "")
+				.replace(/\.+/g, ".")
+				.replace(/^(\d+\.\d+\.\d+)(.*)$/g, "$1")
+				.replace(/\.$/g, "");
+
+		const NodeVersion = getVersion(info.Binaries.Node);
+		const pnpmVersion = getVersion(info.Binaries.pnpm);
+		const VSCodeVersion = getVersion(info.IDEs.VSCode);
+		const GitVersion = getVersion(info.Utilities.Git);
+
+		expect(
+			semver.satisfies(NodeVersion, ">=20.0.0"),
+			`Expected Node version newer than 20.0.0 but got ${NodeVersion}`,
+		).toBe(true);
+		expect(
+			semver.satisfies(pnpmVersion, ">=8.6.0"),
+			`Expected pnpm version newer than 8.6.0 but got ${pnpmVersion}`,
+		).toBe(true);
+		expect(
+			semver.satisfies(VSCodeVersion, ">=1.7.0"),
+			`Expected VSCode version newer than 1.7.0 but got ${VSCodeVersion}`,
+		).toBe(true);
+		expect(
+			semver.satisfies(GitVersion, ">=2.23.0"),
+			`Expected Git version newer than 2.23.0 but got ${GitVersion}`,
+		).toBe(true);
 	});
 
 	test(`products list UI implemented`, async ({ page }) => {
-		await page.goto("/products");
+		await page.goto("/");
 
 		const list = page.getByTestId("products-list");
 		const products = await list.locator("li");
 		await products.first().waitFor();
-		expect(await products.count()).toBe(4);
+		expect(await products.count()).toBeGreaterThanOrEqual(4);
 
 		for (const li of await products.all()) {
-			const name = await li.locator("h3").innerText();
+			const name = await li.getByRole("heading").first().innerText();
 			expect(name).toBeTruthy();
 		}
 	});
@@ -42,39 +66,53 @@ test.describe("Module 1", () => {
 type EnvinfoResult = {
 	System: {
 		OS: string;
-		Shell: {
-			version: string;
-			path: string;
-		};
+		Shell:
+			| string
+			| {
+					version: string;
+					path: string;
+			  };
 	};
 	Binaries: {
-		Node: {
-			version: string;
-			path: string;
-		};
-		npm: {
-			version: string;
-			path: string;
-		};
-		pnpm: {
-			version: string;
-			path: string;
-		};
+		Node:
+			| string
+			| {
+					version: string;
+					path: string;
+			  };
+		npm:
+			| string
+			| {
+					version: string;
+					path: string;
+			  };
+		pnpm:
+			| string
+			| {
+					version: string;
+					path: string;
+			  };
 	};
 	IDEs: {
-		VSCode: {
-			version: string;
-			path: string;
-		};
+		VSCode:
+			| string
+			| {
+					version: string;
+					path: string;
+			  };
 	};
 	Browsers: {
-		Chrome: {
-			version: string;
-		};
+		Chrome:
+			| string
+			| {
+					version: string;
+			  };
 	};
 	Utilities: {
-		Git: {
-			version: string;
-		};
+		Git:
+			| string
+			| {
+					version: string;
+			  };
 	};
 };

@@ -1,21 +1,25 @@
 {
-  "name": "ourstore-e2e-tests",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
-  "license": "ISC",
-  "devDependencies": {
-    "@playwright/test": "1.37.1",
-    "@types/envinfo": "7.8.1",
-    "@types/node": "20.5.4",
-    "@types/semver": "7.5.0",
-    "dotenv": "16.3.1"
-  },
-  "dependencies": {
-    "envinfo": "7.10.0",
-    "semver": "7.5.4"
-  }
+	"name": "ourstore-e2e-tests",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
+	"keywords": [],
+	"author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
+	"license": "ISC",
+	"devDependencies": {
+		"@playwright/test": "1.37.1",
+		"@types/envinfo": "7.8.1",
+		"@types/node": "20.5.4",
+		"@types/semver": "7.5.0",
+		"dotenv": "16.3.1"
+	},
+	"dependencies": {
+		"envinfo": "7.10.0",
+		"semver": "7.5.4"
+	},
+	"engines": {
+		"node": ">=20.0.0",
+		"pnpm": ">=8.6.0"
+	}
 }

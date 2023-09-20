@@ -14,7 +14,9 @@ test.describe("Module 3", () => {
 
 		const nav = page.getByRole("navigation").first();
 		await nav.getByRole("link").last().click();
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("**/categories/**");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 
 		const list = page.getByTestId("products-list");
 		const productLink = list.locator("li a");
@@ -44,7 +46,9 @@ test.describe("Module 3", () => {
 		const lastCategoryLink = nav.getByRole("link").last();
 		const categoryName = await lastCategoryLink.textContent();
 		await lastCategoryLink.click();
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("**/categories/**");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 
 		const list = page.getByTestId("products-list");
 		const productLink = list.locator("li a");
@@ -77,7 +81,9 @@ test.describe("Module 3", () => {
 		randomLink.click();
 
 		expect(collectionName).toBeTruthy();
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("**/collections/**");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 
 		const title = page.getByRole("heading", { name: collectionName! });
 		await title.waitFor();
@@ -124,7 +130,9 @@ test.describe("Module 3", () => {
 		await search.type(productName!);
 		await search.press("Enter");
 
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL(`**/search?query=${encodeURIComponent(productName!)}`);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 
 		// assert the product was found
 		{
@@ -171,7 +179,9 @@ test.describe("Module 3", () => {
 		await search.type(productName!, { delay: 166 });
 
 		// count how many requests were made
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL(`**/search?query=${encodeURIComponent(productName!)}`);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		const uniqueQueries = new Set(
 			requests
 				.filter((url) => url.includes("/search?query="))

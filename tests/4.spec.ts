@@ -52,23 +52,31 @@ test.describe("Module 4", () => {
 
 		// add to cart
 		await page.goto(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.getByTestId("add-to-cart-button").click();
 		await page.waitForResponse((response) => response.url().includes(randomProductLink));
 
 		await page.goto("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		const quantity1 = Number.parseInt((await page.getByTestId("quantity").textContent())!);
 		expect(quantity1).toBe(1);
 
 		// add to cart
 		await page.goto(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.getByTestId("add-to-cart-button").click();
 		await page.waitForResponse((response) => response.url().includes(randomProductLink));
 
 		await page.goto("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		const quantity2 = Number.parseInt((await page.getByTestId("quantity").textContent())!);
 		expect(quantity2).toBe(2);
 	});
@@ -87,12 +95,16 @@ test.describe("Module 4", () => {
 
 		// add to cart
 		await page.goto(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL(randomProductLink);
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.getByTestId("add-to-cart-button").click();
 		await page.waitForResponse((response) => response.url().includes(randomProductLink));
 
 		await page.goto("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		await page.waitForURL("/cart");
+		await expect(page.locator('[aria-busy="true"]')).toHaveCount(0);
 		expect(Number.parseInt((await page.getByTestId("quantity").textContent())!)).toBe(1);
 
 		const incrementBtn = page.getByTestId("increment");
